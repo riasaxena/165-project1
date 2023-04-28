@@ -73,12 +73,15 @@ def benchmark(permutation: PermutationType, algorithm: 'function',  size: int, a
 
 if __name__ == '__main__':
     for size in range (16,18):
-        print(size)
         for algo in SORTING_ALGORITHMS.keys():
             for repeat in range(5):
-                benchmark(PermutationType('random'), SORTING_ALGORITHMS[algo], 2**size, algo)
-                benchmark(PermutationType('reverse'), SORTING_ALGORITHMS[algo], 2**size, algo)
-                benchmark(PermutationType('almost'), SORTING_ALGORITHMS[algo], 2**size, algo)
+                if algo != 'insertion_sort':
+                    benchmark(PermutationType('random'), SORTING_ALGORITHMS[algo], 2**size, algo)
+                    print("random", size)
+                    benchmark(PermutationType('reverse'), SORTING_ALGORITHMS[algo], 2**size, algo)
+                    print("reverse", size)
+                    benchmark(PermutationType('almost'), SORTING_ALGORITHMS[algo], 2**size, algo)
+                    print("almost", size)
 
                 # benchmark(PermutationType.ALMOST_SORTED, SORTING_ALGORITHMS['insertion_sort'], 50, 'insertion_sort')
     # args = parser.parse_args()
