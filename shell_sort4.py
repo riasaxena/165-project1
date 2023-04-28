@@ -19,7 +19,6 @@ def A033622(n):
         else:
             check = int(8*(2**val) - 6*(2**((val+1)/2)) + 1)
 
-        print(check)
         if check > n:
             break
 
