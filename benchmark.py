@@ -72,10 +72,10 @@ def benchmark(permutation: PermutationType, algorithm: 'function',  size: int, a
     save_data(size, elapsed_time, permutation, algorithm_name)
 
 if __name__ == '__main__':
-    for size in range (16,18):
+    for size in range (1,18):
         for algo in SORTING_ALGORITHMS.keys():
             for repeat in range(5):
-                if algo != 'insertion_sort':
+                if (algo != 'insertion_sort') or (algo == 'insertion_sort' and size < 16):
                     benchmark(PermutationType('random'), SORTING_ALGORITHMS[algo], 2**size, algo)
                     print("random", size)
                     benchmark(PermutationType('reverse'), SORTING_ALGORITHMS[algo], 2**size, algo)

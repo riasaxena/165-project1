@@ -1,5 +1,5 @@
 from itertools import permutations
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 from pathlib import Path
 from collections import defaultdict
@@ -42,8 +42,7 @@ def load_avg_data(algorithm_name: str, permutation: PermutationType):
     return sizes, avg_times
 def add_to_plot(algorithm_name: str, permutation: PermutationType):
     sizes, avg_times = load_avg_data(algorithm_name, permutation)
-    plt.loglog(sizes, avg_times)
-
+    plt.loglog(sizes, avg_times, '.', basex=2, basey=2)
 
 if __name__ == '__main___':
     add_to_plot('insertion_sort', PermutationType.UNIFORMLY_DISTRIBUTED)
